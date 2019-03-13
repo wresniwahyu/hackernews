@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.payfazz.hackernews"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", '"https://hacker-news.firebaseio.com/v0/"'
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
+
+    implementation "com.android.support:support-v4:$supportVersion"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+
+    //network
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion") {
+        exclude module: 'okhttp'
+    }
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxAdapterVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+
+    //glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

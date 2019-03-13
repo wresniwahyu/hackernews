@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Hacker News</string>
+    <string name="title_favorites">Favorites</string>
+    
+    <string name="format_id">#%1$d</string>
+    <string name="format_author">Author: %1$s</string>
+    <string name="favorite_added">item berhasil ditambah ke favorite</string>
+    <string name="favorite_removed">item dihapus dari favorite</string>
+</resources>
